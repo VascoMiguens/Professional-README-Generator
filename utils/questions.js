@@ -87,5 +87,5 @@ module.exports = [
     type: "input",
     message: "Email: ",
     name: "email",
-  }
+  },
 ];
