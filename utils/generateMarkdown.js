@@ -1,9 +1,11 @@
+//get the name of the license chosen by the user and render the badge
 let renderLicenseBadge = (license) => {
   if (license !== "None") {
     return `![${license}](https://img.shields.io/badge/license-${license}-blue.svg})`;
   }
 };
 
+//get the name of the license chosen by the user and return the appropriate link
 let renderLicenseLink = (license) => {
   if (license !== "None") {
     switch (license) {
@@ -37,15 +39,52 @@ let renderLicenseLink = (license) => {
   }
 };
 
+//depending on the license chosen by the user this function will render the markdown with license name and link returned by the renderLicenseLink function
 let renderLicenseSection = (license) => {
-    if (license !== "None") {
-        return `## License 
+  if (license !== "None") {
+    return `## License 
         This project is licensed under the ${license} license.
         To know more about this license visit:
             * ${renderLicenseLink(license)}`;
-    }
+  }
 };
 
+//generate the markdown for the readme using the answers from the user
+let generateMarkdown = (data) => {
+  return `# ${data.title}
+    
+${renderLicenseBadge(data.license)}
 
+## Table of Contents
+*[Description](#description)
+*[Installation](#installation)
+*[Usage](#usage)
+*[Contributing](#contributing)
+*[Tests](#tests)
+*[Licenses](#license)
+*[Questions(#questions)
 
+## Description
+${data.description}
 
+## Installation
+${data.installation}
+
+## Usage
+${data.usage}
+
+##Contributing
+${data.contributing}
+
+## Tests
+${data.tests}
+
+${renderLicenseSection(data.license)}
+
+## Questions
+Any questuons about this project refer to:
+* [Github](${data.username})
+* [Email](${data.email})`;
+};
+
+module.exports = generateMarkdown;
