@@ -5,14 +5,21 @@ module.exports = [
     name: "title",
   },
   {
-    type: "input",
+    type: "list",
     message: "Description of your project: ",
     name: "description",
+    choices: ["Text and a list", "Text"],
+  },
+  {
+    tpye: "input",
+    message: "Enter your description: ",
+    name: "descriptionText",
+    when: (answers) => answers.description === "Text",
   },
   {
     type: "confirm",
     message: "Does your project require any installation instruction?",
-    name: "requiresInstallation",
+    name: "installation",
   },
   {
     type: "input",
@@ -22,12 +29,12 @@ module.exports = [
   {
     type: "input",
     message: "How to contribute to your project: ",
-    name: "contrites",
+    name: "contributing",
   },
   {
     type: "input",
     message: "Test instructions: ",
-    name: "test",
+    name: "tests",
   },
   {
     type: "list",
@@ -81,7 +88,7 @@ module.exports = [
   {
     type: "input",
     message: "Github Username: ",
-    name: "username",
+    name: "github",
   },
   {
     type: "input",
