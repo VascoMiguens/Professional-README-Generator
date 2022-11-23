@@ -49,42 +49,52 @@ let renderLicenseSection = (license) => {
   }
 };
 
+let renderDescription = (description) => {
+  if (description !== undefined) {
+    return `${description
+      .map((descriptionItem) => `\n* ${descriptionItem.descriptionItem}`)
+      .join("")}`;
+  }
+};
 //generate the markdown for the readme using the answers from the user
 let generateMarkdown = (data) => {
-  return `# ${data.title}
-    
-${renderLicenseBadge(data.license)}
+  console.log(data);
+  return `# ${data[0].title}
+
+
+${renderLicenseBadge(data[5].license)}
 
 ## Table of Contents
-*[Description](#description)
-*[Installation](#installation)
-*[Usage](#usage)
-*[Contributing](#contributing)
-*[Tests](#tests)
-*[Licenses](#license)
-*[Questions(#questions)
-
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Licenses](#license)
+* [Questions](#questions)
+  
 ## Description
-${data.description}
+${data[1].descriptionText}
+${renderDescription(data[2])}
 
 ## Installation
-${data.installation}
+${data[0].installation}
 
 ## Usage
-${data.usage}
+${data[5].usageText}
 
-##Contributing
-${data.contributing}
+## Contributing
+${data[5].contributing}
 
 ## Tests
-${data.tests}
+${data[5].tests}
 
-${renderLicenseSection(data.license)}
+${renderLicenseSection(data[5].license)}
 
 ## Questions
 Any questuons about this project refer to:
-* [Github](${data.username})
-* [Email](${data.email})`;
+  * [Github](${data[5].github})
+  * [Email](${data[5].email})`;
 };
 
 module.exports = generateMarkdown;
