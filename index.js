@@ -30,7 +30,6 @@ const initApp = async () => {
     descriptionList = await questions.list();
   }
   const projectInstallation = await inquirer.prompt(questions.installation);
-  console.log(projectInstallation.installationConfirm);
   /*if the user chose the list option for the installation call the list function*/
   if (projectInstallation.installationChoices == "List") {
     installationList = await questions.list();

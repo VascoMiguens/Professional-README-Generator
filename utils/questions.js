@@ -57,10 +57,8 @@ const list = async (items = []) => {
   //save answer key-value pair into an object create with spread syntax
   //callback function to be called when the repeat boolean value is checked
   const { repeat, ...answers } = await inquirer.prompt(prompts);
-  console.log(repeat, answers);
   //create new object and save the answer key-value pair into array
   const newItems = [...items, answers];
-  console.log(newItems);
   //ternary operatior checks the value of repeat, if truthy call list function, if falst return newItems array
   return repeat ? list(newItems) : newItems;
 };
@@ -150,7 +148,7 @@ const PNG = async (items = []) => {
     },
     {
       type: "input",
-      name: "image",
+      name: "imageName",
       message: "Enter the image name: (Do not insert file type)",
       validate: (answer) => {
         if (answer) {
@@ -172,10 +170,8 @@ const PNG = async (items = []) => {
   //save answer key-value pair into an object create with spread syntax
   //callback function to be called when the repeat boolean value is checked
   const { repeat, ...answers } = await inquirer.prompt(prompts);
-  console.log(repeat, answers);
   //create new object and save the answer key-value pair into array
   const newItems = [...items, answers];
-  console.log(newItems);
   //ternary operatior checks the value of repeat, if truthy call list function, if falst return newItems array
   return repeat ? PNG(newItems) : newItems;
 };

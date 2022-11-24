@@ -52,9 +52,8 @@ let renderLicenseSection = (license) => {
 };
 
 let renderList = (list) => {
-  console.log(list);
   if (list !== undefined) {
-    return `${list.map((listItem) => `\n* ${listItem.item}`).join("")}`;
+    return `${list.map((listItem) => `\n * ${listItem.item}`).join("")}`;
   }
   return "";
 };
@@ -66,6 +65,18 @@ let renderInstallation = (choices, installation) => {
     return `## Installation \n ${installation
       .map((installationItem) => `\n* ${installationItem.item}`)
       .join("")}`;
+  }
+};
+
+let renderUsage = (choices, usage, githubUsername, projectTitle) => {
+  console.log(usage);
+  if (choices.usageChoices === "Gif") {
+    return `## Usage \n ${choices.usageText} \n ![til](https://github.com/${githubUsername}/${projectTitle}/blob/main/util/image/${choices.demoName}.gif)`;
+  } else if (choices.usageChoices === "PNG") {
+    return `## Usage \n ${choices.usageText} ${usage.map(
+      (item) =>
+        `\n ${item.imageDescription} \n !([]https://github.com/${githubUsername}/${projectTitle}/blob/main/assets/${item.imageName}.png)`
+    )}`;
   }
 };
 //generate the markdown for the readme using the answers from the user
@@ -90,8 +101,8 @@ ${
     ? renderInstallation(data[3], data[4])
     : ""
 }
-## Usage
-${data[5].usageText}
+
+${renderUsage(data[5], data[6], data[7].github, data[0].title)}
 ## Contributing
 ${data[7].contributing}
 ## Tests
