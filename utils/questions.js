@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 
-
 // Give the Project a name
 const projectName = {
   type: "input",
@@ -31,13 +30,12 @@ const description = [
   },
 ];
 
-//Function that allows the repition of the same question and saves the result in an array
-const list = async (name, items = []) => {
-  console.log(name);
+//Function that allows the repition of the same question and saves the result in an array of objects
+const list = async (items = []) => {
   const prompts = [
     {
       type: "input",
-      name: name,
+      name: "item",
       message: "Enter an item to your list: ",
       validate: (answer) => {
         if (answer) {
@@ -50,20 +48,24 @@ const list = async (name, items = []) => {
     },
     {
       type: "confirm",
-      name: "again",
+      name: "repeat",
       message: "Enter another item? ",
       default: true,
     },
   ];
-  // Confirm if the user wants to insert more items and copy the array with the spread syntax
-  const { again, ...answers } = await inquirer.prompt(prompts);
-  //add the new items to the array
+  //save the repeat boolean value
+  //save answer key-value pair into an object create with spread syntax
+  //callback function to be called when the repeat boolean value is checked
+  const { repeat, ...answers } = await inquirer.prompt(prompts);
+  console.log(repeat, answers);
+  //create new object and save the answer key-value pair into array
   const newItems = [...items, answers];
-  //Check if the user wants to add another item with "again", if so call list function, if not return the newItems
-  return again ? list(name, newItems) : newItems;
+  console.log(newItems);
+  //ternary operatior checks the value of repeat, if truthy call list function, if falst return newItems array
+  return repeat ? list(newItems) : newItems;
 };
 
-//User selects the format of their installation
+//User selects the format of their project installation guidelines
 const installation = [
   {
     type: "confirm",
@@ -93,16 +95,16 @@ const installation = [
   },
 ];
 
-const remainingQuestions = [
+const usage = [
   {
     type: "list",
-    message: "Choose an option to demo how to use your project?",
+    message: "How do you want to demonstrate your project?",
     name: "usageChoices",
     choices: ["Gif", "PNG"],
   },
   {
     type: "input",
-    message: "Add a short sentence to introduce your demo: ",
+    message: "Add a sentence to introduce your demo: ",
     name: "usageText",
     validate: (answer) => {
       if (answer) {
@@ -116,8 +118,9 @@ const remainingQuestions = [
   {
     type: "input",
     message:
-      "What is the name of your demo?(Do not insert the file type, only the name)",
+      "What is the name of your Gif?(Do not insert the file type, only the name)",
     name: "demoName",
+    when: (answer) => answer.usageChoices == "Gif",
     validate: (answer) => {
       if (answer) {
         return true;
@@ -127,6 +130,57 @@ const remainingQuestions = [
       }
     },
   },
+];
+
+const PNG = async (items = []) => {
+  const prompts = [
+    {
+      type: "input",
+      name: "imageDescription",
+      message:
+        "Describe the Image: (Make sure all images are in the utils/image directory)",
+      validate: (answer) => {
+        if (answer) {
+          return true;
+        } else {
+          console.log("Please enter a description");
+          return false;
+        }
+      },
+    },
+    {
+      type: "input",
+      name: "image",
+      message: "Enter the image name: (Do not insert file type)",
+      validate: (answer) => {
+        if (answer) {
+          return true;
+        } else {
+          console.log("Please enter the name of the image: ");
+          return false;
+        }
+      },
+    },
+    {
+      type: "confirm",
+      name: "repeat",
+      message: "Enter another item? ",
+      default: true,
+    },
+  ];
+  //save the repeat boolean value
+  //save answer key-value pair into an object create with spread syntax
+  //callback function to be called when the repeat boolean value is checked
+  const { repeat, ...answers } = await inquirer.prompt(prompts);
+  console.log(repeat, answers);
+  //create new object and save the answer key-value pair into array
+  const newItems = [...items, answers];
+  console.log(newItems);
+  //ternary operatior checks the value of repeat, if truthy call list function, if falst return newItems array
+  return repeat ? PNG(newItems) : newItems;
+};
+
+const remainingQuestions = [
   {
     type: "input",
     message: "How to contribute to your project: ",
@@ -234,6 +288,8 @@ module.exports = {
   projectName,
   description,
   installation,
+  usage,
   remainingQuestions,
   list,
+  PNG,
 };

@@ -24,19 +24,20 @@ const writeToFile = (data) => {
 const initApp = async () => {
   const projectTitle = await inquirer.prompt(questions.projectName);
   const projectDescription = await inquirer.prompt(questions.description);
-  let descriptionList, installationList;
-  /*if the user chose the list option for the description 
-    give the question a name and call the list function*/
+  let descriptionList, installationList, usagePNG;
+  /*if the user chose the list option for the description call the list function*/
   if (projectDescription.descriptionChoices == "Text and a list") {
-    const descriptionListName = "descriptionItem";
-    descriptionList = await questions.list(descriptionListName);
+    descriptionList = await questions.list();
   }
   const projectInstallation = await inquirer.prompt(questions.installation);
-  /*if the user chose the list option for the installation 
-    give the question a name and call the list function*/
+  console.log(projectInstallation.installationConfirm);
+  /*if the user chose the list option for the installation call the list function*/
   if (projectInstallation.installationChoices == "List") {
-    const installationListName = "installationItem";
-    installationList = await questions.list(installationListName);
+    installationList = await questions.list();
+  }
+  const projectUsage = await inquirer.prompt(questions.usage);
+  if (projectUsage.usageChoices == "PNG") {
+    usagePNG = await questions.PNG();
   }
   //call the remaining questions
   const remainingQuestions = await inquirer.prompt(
@@ -49,6 +50,8 @@ const initApp = async () => {
     descriptionList,
     projectInstallation,
     installationList,
+    projectUsage,
+    usagePNG,
     remainingQuestions,
   ];
 };

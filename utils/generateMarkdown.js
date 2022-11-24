@@ -3,6 +3,7 @@ let renderLicenseBadge = (license) => {
   if (license !== "None") {
     return `![${license}](https://img.shields.io/badge/license-${license}-blue.svg})`;
   }
+  return "";
 };
 
 //get the name of the license chosen by the user and return the appropriate link
@@ -47,22 +48,29 @@ let renderLicenseSection = (license) => {
         To know more about this license visit:
             * ${renderLicenseLink(license)}`;
   }
+  return "";
 };
 
-let renderDescription = (description) => {
-  if (description !== undefined) {
-    return `${description
-      .map((descriptionItem) => `\n* ${descriptionItem.descriptionItem}`)
+let renderList = (list) => {
+  console.log(list);
+  if (list !== undefined) {
+    return `${list.map((listItem) => `\n* ${listItem.item}`).join("")}`;
+  }
+  return "";
+};
+
+let renderInstallation = (choices, installation) => {
+  if (choices.installationChoices == "Text") {
+    return `## Installation \n ${choices.installationText}`;
+  } else if (choices.installationChoices == "List") {
+    return `## Installation \n ${installation
+      .map((installationItem) => `\n* ${installationItem.item}`)
       .join("")}`;
   }
 };
 //generate the markdown for the readme using the answers from the user
 let generateMarkdown = (data) => {
-  console.log(data);
-  return `# ${data[0].title}
-
-
-${renderLicenseBadge(data[5].license)}
+  return `# ${data[0].title} ${renderLicenseBadge(data[7].license)}
 
 ## Table of Contents
 * [Description](#description)
@@ -75,26 +83,26 @@ ${renderLicenseBadge(data[5].license)}
   
 ## Description
 ${data[1].descriptionText}
-${renderDescription(data[2])}
+${renderList(data[2])}
 
-## Installation
-${data[0].installation}
-
+${
+  data[3].installationConfirm == true
+    ? renderInstallation(data[3], data[4])
+    : ""
+}
 ## Usage
 ${data[5].usageText}
-
 ## Contributing
-${data[5].contributing}
-
+${data[7].contributing}
 ## Tests
-${data[5].tests}
+${data[7].tests}
 
-${renderLicenseSection(data[5].license)}
+${renderLicenseSection(data[7].license)}
 
 ## Questions
 Any questuons about this project refer to:
-  * [Github](${data[5].github})
-  * [Email](${data[5].email})`;
+  * [Github](${data[7].github})
+  * [Email](${data[7].email})`;
 };
 
 module.exports = generateMarkdown;
