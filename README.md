@@ -25,9 +25,9 @@ This project is the ninth challenge of a bootcamp where students had to implemen
 * Install all dependencies with the command "run npm install"
 
 ## Usage 
- The following video demonstrates how to use the application : 
+ The following video demonstrates how to use the application, click the gif to view it on Youtube : 
  
- ![til](https://github.com/VascoMiguens/Professional-README-Generator/blob/main/utils/image/professional_readme_generator.gif)
+ [![til](https://github.com/VascoMiguens/Professional-README-Generator/blob/main/utils/image/professional_readme_generator.gif)](https://youtu.be/i-eq5QE54qQ)
  
 ## Contributing
 Please feel free to submit pull requests or open issues to improve this applcation
