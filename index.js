@@ -6,7 +6,7 @@ const inquirer = require("inquirer");
 //
 const writeToFile = (data) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile("README.md", data, (err) => {
+    fs.writeFile("./utils/dist/README.md", data, (err) => {
       if (err) {
         reject(err);
         return;
@@ -14,7 +14,7 @@ const writeToFile = (data) => {
       resolve({
         ok: true,
         message: console.log(
-          "Success! Retrieve your README.md file in your project main folder!"
+          "Success! Retrieve your README.md file in utils/dist folder!"
         ),
       });
     });
