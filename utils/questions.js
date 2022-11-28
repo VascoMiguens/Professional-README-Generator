@@ -27,6 +27,21 @@ const description = [
     tpye: "input",
     message: "Enter your description: ",
     name: "descriptionText",
+    when: (answer) => answer.descriptionChoices == "Text",
+    validate: (answer) => {
+      if (answer) {
+        return true;
+      } else {
+        console.log("Please enter your description");
+        return false;
+      }
+    },
+  },
+  {
+    tpye: "input",
+    message: "Enter a short entry your description list: ",
+    name: "descriptionText",
+    when: (answer) => answer.descriptionChoices == "Text and a list",
     validate: (answer) => {
       if (answer) {
         return true;
