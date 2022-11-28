@@ -113,11 +113,11 @@ let renderInstallation = (choices, installation) => {
 let renderUsage = (choices, usage, githubUsername, projectTitle) => {
   const title = projectTitle.replace(/\s+/g, "-");
   if (choices.usageChoices === "Gif") {
-    return `## Usage \n ${choices.usageText} \n ![til](https://github.com/${githubUsername}/${title}/blob/main/utils/image/${choices.demoName}.gif)`;
+    return `## Usage \n ${choices.usageText} \n ![til](https://github.com/${githubUsername}/${title}/blob/main/utils/dist/${choices.demoName}.gif)`;
   } else if (choices.usageChoices === "PNG") {
     return `## Usage \n ${choices.usageText} ${usage.map(
       (item) =>
-        `\n ${item.imageDescription} \n !([]https://github.com/${githubUsername}/${title}/blob/main/utils/image/${item.imageName}.png)`
+        `\n ${item.imageDescription} \n !([]https://github.com/${githubUsername}/${title}/blob/main/utils/dist/${item.imageName}.png)`
     )}`;
   }
 };
