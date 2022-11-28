@@ -4,7 +4,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 
 //
-const writeToFile = (data) => {
+const writetoFile = (data) => {
   return new Promise((resolve, reject) => {
     fs.writeFile("./utils/dist/README.md", data, (err) => {
       if (err) {
@@ -61,7 +61,7 @@ initApp()
     return generateMarkdown(questionsInfo);
   })
   .then((readmeFile) => {
-    return writeToFile(readmeFile);
+    return writetoFile(readmeFile);
   })
   .catch((err) => {
     console.log(err);

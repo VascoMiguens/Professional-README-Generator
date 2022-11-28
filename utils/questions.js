@@ -124,7 +124,7 @@ const usage = [
   {
     type: "input",
     message:
-      "What is the name of your Gif?(Do not insert the file type, only the name)",
+      "What is the name of your Gif?(Insert your gif in the utils/dist directory)",
     name: "demoName",
     when: (answer) => answer.usageChoices == "Gif",
     validate: (answer) => {
@@ -144,7 +144,7 @@ const PNG = async (items = []) => {
       type: "input",
       name: "imageDescription",
       message:
-        "Describe the Image: (Make sure all images are in the utils/image directory)",
+        "Describe the Image: (Insert your images in the utils/dist directory)",
       validate: (answer) => {
         if (answer) {
           return true;
