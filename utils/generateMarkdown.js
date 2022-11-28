@@ -122,8 +122,8 @@ let renderUsage = (choices, usage, githubUsername, projectTitle) => {
 };
 
 let contentsInstallation = (confirm) => {
-  if (confirm.installationConfirm === "false") {
-    return `*[Installation](#installation)`;
+  if (confirm.installationConfirm === true) {
+    return ` *[Installation](#installation)`;
   }
   return "";
 };
