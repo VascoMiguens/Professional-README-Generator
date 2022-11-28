@@ -41,5 +41,5 @@ To know more about this license visit:
 
 ## Questions
 Any questuons about this project refer to:
-  * [Github](VascoMiguens)
-  * [Email](v_miguens@hotmail.com)
+  * [Github](https://github.com/VascoMiguens)
+  * Email : (v_miguens@hotmail.com)
