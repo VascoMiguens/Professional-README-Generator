@@ -27,6 +27,14 @@ const description = [
     tpye: "input",
     message: "Enter your description: ",
     name: "descriptionText",
+    validate: (answer) => {
+      if (answer) {
+        return true;
+      } else {
+        console.log("Please enter your description");
+        return false;
+      }
+    },
   },
 ];
 
@@ -209,43 +217,43 @@ const remainingQuestions = [
     name: "license",
     choices: [
       {
-        value: "Apache", //Apache License Version 2.0
+        value: "Apache License v2.0",
       },
       {
-        value: "GNU Version 3.0", //GNU GENERAL PUBLIC LICENSE Version 3
+        value: "GNU GENERAL PUBLIC LICENSE v3.0",
       },
       {
-        value: "MIT", //MIT License
+        value: "MIT License",
       },
       {
-        value: "BSD 2-Clause", //
+        value: "BSD 2-Clause License",
       },
       {
-        value: "BSD 3-Clause", //BSD 2-Clause License
+        value: "BSD 3-Clause License",
       },
       {
-        value: "Boost Software License", //BSD 3-Clause License
+        value: "Boost Software License 1.0",
       },
       {
-        value: "Creative Commons Zero v1.0 Universal", //Creative Commons Zero v1.0 Univrersal
+        value: "Creative Commons Zero v1.0 Universal",
       },
       {
-        value: "Eclipse", //Eclipse Public License - v 2.0
+        value: "Eclipse Public License v2.0",
       },
       {
-        value: "GNU AFFERO", //GNU AFFERO GENERAL PUBLIC LICENSE Version 3
+        value: "GNU AFFERO GENERAL PUBLIC LICENSE v3.0",
       },
       {
-        value: "GNU Version 2.0", //GNU GENERAL PUBLIC LICENSE Version 2
+        value: "GNU General Public License v2.0",
       },
       {
-        value: "GNU Lesser", //GNU LESSER GENERAL PUBLIC LICENSE Version 2.1
+        value: "GNU Lesser General Public License v2.1",
       },
       {
-        value: "Mozilla", //Mozilla Public License Version 2.0
+        value: "Mozilla Public License v2.0",
       },
       {
-        value: "The Unlicense", //The Unlicense
+        value: "The Unlicense",
       },
       {
         value: "None",

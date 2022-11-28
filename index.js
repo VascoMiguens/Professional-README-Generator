@@ -3,6 +3,7 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const fs = require("fs");
 const inquirer = require("inquirer");
 
+//
 const writeToFile = (data) => {
   return new Promise((resolve, reject) => {
     fs.writeFile("README.md", data, (err) => {
@@ -13,7 +14,7 @@ const writeToFile = (data) => {
       resolve({
         ok: true,
         message: console.log(
-          'Success! Go the "dist" folder to review your README.md file!'
+          "Success! Retrieve your README.md file in your project main folder!"
         ),
       });
     });
