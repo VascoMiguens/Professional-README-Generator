@@ -27,7 +27,7 @@ This project is the ninth challenge of a bootcamp where students had to implemen
 ## Usage 
  The following video demonstrates how to use the application, click the gif to view it on Youtube : 
  
- [![til](https://github.com/VascoMiguens/Professional-README-Generator/blob/main/utils/image/professional_readme_generator.gif)](https://youtu.be/i-eq5QE54qQ)
+ [![til](https://github.com/VascoMiguens/Professional-README-Generator/blob/main/utils/dist/professional_readme_generator.gif)](https://youtu.be/i-eq5QE54qQ)
  
 ## Contributing
 Please feel free to submit pull requests or open issues to improve this applcation
@@ -41,5 +41,5 @@ To know more about this license visit:
 
 ## Questions
 Any questuons about this project refer to:
-  * [Github](VascoMiguens)
-  * [Email](v_miguens@hotmail.com)
+  * [Github](https://github.com/VascoMiguens)
+  * Email : v_miguens@hotmail.com
