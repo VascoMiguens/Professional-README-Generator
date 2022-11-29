@@ -170,7 +170,7 @@ ${renderLicenseSection(data[7].license)}
 ## Questions
 Any questions about this project refer to:
   * [Github](${data[7].github}(https://github.com/${data[7].github}))
-  * Email: (${data[7].email})`;
+  * Email: ${data[7].email}`;
 };
 
 module.exports = generateMarkdown;
